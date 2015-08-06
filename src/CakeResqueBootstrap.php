@@ -21,6 +21,16 @@
 include getenv('APP') . '../config/bootstrap.php';
 use Cake\Console\ShellDispatcher;
 
+
+Resque_Event::listen('afterdoneworking', function ($job)
+{
+    Cake\Console\ShellDispatcher::run(['void', 'emit','jobafterdoneworking',json_encode([
+        'queue'     => $job->queue,
+        'payload'   => $job->payload,
+    ])]);
+
+});
+
 class Resque_Job_Creator
 {
 
