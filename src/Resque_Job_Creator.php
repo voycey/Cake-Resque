@@ -44,10 +44,10 @@ class Resque_Job_Creator
         list($plugin, $model) = pluginSplit($className);
 
         if (self::$rootFolder === null) {
-            self::$rootFolder = dirname(dirname(dirname(dirname(__DIR__)))) . DS . 'src' . DS;
+            self::$rootFolder = dirname(dirname(dirname(dirname(__DIR__)))) . DS;
         }
 
-        $classpath = self::$rootFolder . (empty($plugin) ? '' : 'plugins' . DS . $plugin . DS) . 'Shell' . DS . $model . '.php';
+        $classpath = self::$rootFolder . (empty($plugin) ? '' : 'plugins' . DS . $plugin . DS) . 'src' . DS . 'Shell' . DS . $model . '.php';
 
         if (file_exists($classpath)) {
             require_once $classpath;
