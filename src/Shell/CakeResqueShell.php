@@ -316,6 +316,9 @@ class CakeResqueShell extends Shell
             ])
             ->addSubcommand('load', [
                 'help' => __d('cake_resque', 'Load a set of predefined workers.'),
+            ])
+            ->addSubcommand('enqueue', [
+                'help' => __d('cake_resque', 'Enqueue a job.'),
             ]);
     }
 
@@ -795,8 +798,8 @@ class CakeResqueShell extends Shell
             return false;
         }
 
-        if (file_exists(APP . 'src' . DS . 'CakeResqueBootstrap.php')) {
-            $bootstrapPath = APP . 'src' . DS . 'CakeResqueBootstrap.php';
+        if (file_exists(APP . 'CakeResqueBootstrap.php')) {
+            $bootstrapPath = APP . 'CakeResqueBootstrap.php';
         } else {
             $bootstrapPath = Plugin::path('CakeResque') . 'src' . DS . 'CakeResqueBootstrap.php';
         }
