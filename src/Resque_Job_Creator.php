@@ -36,7 +36,7 @@ class Resque_Job_Creator
      *
      * @param string $className className of the job to instanciate
      * @param array $args Array of method name and arguments used to build the job
-     * @return object $args a job instance
+     * @return object $model a job class
      * @throws Resque_Exception when the class is not found, or does not follow the job file convention
      */
     public static function createJob($className, $args)
@@ -55,7 +55,7 @@ class Resque_Job_Creator
             throw new Resque_Exception('Resque_Job_Creator could not find file '.$classpath.' for job class ' . $className . '.');
         }
 
-        $model = $plugin. '\\Shell\\' . $model;
+        $model = $plugin . '\\Shell\\' . $model;
 
         if (!class_exists($model)) {
             throw new Resque_Exception('Resque_Job_Creator could not find job class ' . $className . ' in file '.$classpath.'.');
@@ -65,6 +65,6 @@ class Resque_Job_Creator
             throw new Resque_Exception('Resque_Job_Creator. Job class ' . $className . ' does not contain ' . $args[0] . ' method.');
         }
 
-        return [new $model(),array_shift($args),$args];
+        return new $model();
     }
 }
