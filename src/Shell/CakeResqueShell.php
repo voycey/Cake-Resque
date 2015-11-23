@@ -72,6 +72,7 @@ class CakeResqueShell extends Shell
      */
     public function startup()
     {
+        CakeResque::init();
         $reflector = new ReflectionClass('Resque');
         $this->_resqueLibrary = dirname(dirname($reflector->getFileName()));
 
