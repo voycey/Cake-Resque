@@ -23,7 +23,6 @@ use Cake\Console\ShellDispatcher;
 
 class Resque_Job_Creator
 {
-
     /**
      * Create and return a job instance
      *
@@ -37,11 +36,8 @@ class Resque_Job_Creator
         if (!class_exists('Cake\Console\ShellDispatcher')) {
             throw new Resque_Exception('Resque_Job_Creator could not find Cake\Console\ShellDispatcher.');
         }
-
         array_unshift($args, 'void', $className);
         $args[] = '-q';
-
         return [new Cake\Console\ShellDispatcher($args),'dispatch'];
-
     }
 }
