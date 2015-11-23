@@ -36,10 +36,5 @@
     "email": "kami@kamisama.me",
     "issues": "https://github.com/kamisama/Cake-Resque/issues",
     "source": "https://github.com/kamisama/Cake-Resque"
-  },
-  "autoload": {
-    "psr-4": {
-      "CakeResque\\": "src/"
-    }
   }
 }
